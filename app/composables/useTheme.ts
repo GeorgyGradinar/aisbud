@@ -1,6 +1,12 @@
 export function useTheme() {
   const isLight = useState('theme', () => false)
 
+  useHead({
+    htmlAttrs: {
+      class: computed(() => isLight.value ? 'light' : ''),
+    },
+  })
+
   function init() {
     if (import.meta.client) {
       const saved = localStorage.getItem('aisbud-theme')

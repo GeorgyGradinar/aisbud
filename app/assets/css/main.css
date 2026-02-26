@@ -29,7 +29,7 @@
 }
 
 /* --- Light Theme --- */
-.light {
+html.light {
   --color-bg: #f3f6f4;
   --color-surface: #ffffff;
   --color-surface-2: #e9efeb;
@@ -40,9 +40,6 @@
   --color-accent-light: #22c55e;
   --color-white: #ffffff;
   --accent-rgb: 22, 163, 74;
-
-  color: var(--color-text);
-  background-color: var(--color-bg);
 }
 
 html {

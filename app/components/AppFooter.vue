@@ -1,4 +1,5 @@
 <script setup lang="ts">
+const { isLight } = useTheme()
 const { el: footerRef, revealed: footerRevealed } = useReveal({ threshold: 0.05, rootMargin: '0px' })
 </script>
 
@@ -7,7 +8,7 @@ const { el: footerRef, revealed: footerRevealed } = useReveal({ threshold: 0.05,
     <div ref="footerRef" class="container footer__inner footer-reveal" :class="{ revealed: footerRevealed }">
       <div class="footer__left">
         <a href="#" class="logo">
-          <img src="/logo.svg" alt="AisBud" class="logo__img">
+          <img :src="isLight ? '/logo-for-white-background.svg' : '/logo-for-black-background.svg'" alt="AisBud" class="logo__img">
         </a>
         <p class="footer__tagline">Аккуратно и с заботой о доме</p>
       </div>

@@ -33,7 +33,7 @@ onUnmounted(() => {
   <header class="header" :class="{ 'header--scrolled': isScrolled }">
     <div class="container header__inner">
       <a href="#" class="logo">
-        <img src="/logo.svg" alt="AisBud" class="logo__img">
+        <img :src="isLight ? '/logo-for-white-background.svg' : '/logo-for-black-background.svg'" alt="AisBud" class="logo__img">
       </a>
       <nav class="nav" :class="{ 'nav--open': isBurgerOpen }">
         <NuxtLink to="#services" class="nav__link" @click="closeMobile">Услуги</NuxtLink>

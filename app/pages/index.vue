@@ -7,7 +7,7 @@ onMounted(() => {
 </script>
 
 <template>
-  <div :class="{ light: isLight }">
+  <div>
     <AppHeader />
     <HeroSection />
     <ServicesSection />
