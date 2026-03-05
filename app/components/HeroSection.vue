@@ -4,13 +4,15 @@ const heroRef = ref<HTMLElement>()
 const heroContent = ref<HTMLElement>()
 const heroVisual = ref<HTMLElement>()
 
-const slides = [
-  { src: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80', alt: 'Современный интерьер' },
-  { src: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80', alt: 'Светлая гостиная' },
-  { src: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80', alt: 'Дизайнерская кухня' },
-  { src: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800&q=80', alt: 'Уютная спальня' },
-  { src: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=800&q=80', alt: 'Стильный санузел' },
-]
+const { t } = useI18n()
+
+const slides = computed(() => [
+  { src: 'https://images.unsplash.com/photo-1600585154340-be6161a56a0c?w=800&q=80', alt: t('hero.slides.0') },
+  { src: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=800&q=80', alt: t('hero.slides.1') },
+  { src: 'https://images.unsplash.com/photo-1600566753190-17f0baa2a6c3?w=800&q=80', alt: t('hero.slides.2') },
+  { src: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=800&q=80', alt: t('hero.slides.3') },
+  { src: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=800&q=80', alt: t('hero.slides.4') },
+])
 
 const currentSlide = ref(0)
 let slideInterval: ReturnType<typeof setInterval>
@@ -72,20 +74,18 @@ onUnmounted(() => {
     <div class="hero__bg" />
     <div class="container hero__inner">
       <div ref="heroContent" class="hero__content">
-        <p class="hero__label">Ремонт квартир и домов в Грузии</p>
+        <p class="hero__label">{{ $t('hero.label') }}</p>
         <h1 class="hero__title">
-          Ремонт,<br>
-          в который <span class="hero__title--italic">хочется</span><br>
-          возвращаться
+          {{ $t('hero.title1') }}<br>
+          {{ $t('hero.title2') }} <span class="hero__title--italic">{{ $t('hero.titleItalic') }}</span><br>
+          {{ $t('hero.title3') }}
         </h1>
         <p class="hero__desc">
-          Меня зовут Антон, я строитель с большим практическим опытом.
-          В AisBud мы выполняем частные и коммерческие ремонты, внимательно
-          относимся к деталям и контролируем каждый этап работ.
+          {{ $t('hero.desc') }}
         </p>
         <div class="hero__actions">
-          <a href="#services" class="btn btn--primary">Наши услуги</a>
-          <a href="tel:+995595067420" class="btn btn--outline">Позвонить</a>
+          <a href="#services" class="btn btn--primary">{{ $t('hero.services') }}</a>
+          <a href="tel:+995595067420" class="btn btn--outline">{{ $t('hero.call') }}</a>
         </div>
       </div>
       <div ref="heroVisual" class="hero__visual">
@@ -104,25 +104,24 @@ onUnmounted(() => {
               :key="i"
               class="hero__slide-dot"
               :class="{ 'hero__slide-dot--active': currentSlide === i }"
-              :aria-label="`Слайд ${i + 1}`"
+              :aria-label="`${$t('hero.slideLabel')} ${i + 1}`"
               @click="currentSlide = i"
             />
           </div>
         </div>
         <div class="hero__quote">
           <blockquote>
-            &laquo;Моя цель&nbsp;&mdash; чтобы вы зашли в готовое пространство
-            и сказали: <em>&lsquo;Именно таким я это и видел&rsquo;</em>.&raquo;
+            &laquo;{{ $t('hero.quote') }}&raquo;
           </blockquote>
           <div class="hero__quote-author">
-            <img src="/founder.jpg" alt="Антон — основатель AisBud" class="hero__quote-avatar">
-            <span>&mdash; Антон, основатель AisBud</span>
+            <img src="/founder.jpg" :alt="$t('common.founderAlt')" class="hero__quote-avatar">
+            <span>{{ $t('hero.quoteAuthor') }}</span>
           </div>
         </div>
       </div>
     </div>
     <div class="hero__scroll">
-      <span>Листайте вниз</span>
+      <span>{{ $t('hero.scroll') }}</span>
       <div class="hero__scroll-line" />
     </div>
   </section>

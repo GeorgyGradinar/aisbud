@@ -1,12 +1,9 @@
 <script setup lang="ts">
 const { el: headerRef, revealed: headerRevealed } = useReveal()
 const { isLight } = useTheme()
-
 const projects = [
   {
-    tag: 'Косметический ремонт',
-    title: 'Квартира 65 м²',
-    location: 'ЖК Центральный',
+    idx: 0,
     cover: 'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=600&q=80',
     images: [
       'https://images.unsplash.com/photo-1600607687939-ce8a6c25118c?w=1200&q=85',
@@ -16,9 +13,7 @@ const projects = [
     ],
   },
   {
-    tag: 'Полная отделка',
-    title: 'Санузел',
-    location: 'Дизайнерский ремонт',
+    idx: 1,
     cover: 'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=600&q=80',
     images: [
       'https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?w=1200&q=85',
@@ -27,9 +22,7 @@ const projects = [
     ],
   },
   {
-    tag: 'Дизайн + ремонт',
-    title: 'Кухня-гостиная',
-    location: 'Стиль лофт',
+    idx: 2,
     cover: 'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=600&q=80',
     images: [
       'https://images.unsplash.com/photo-1600210492486-724fe5c67fb0?w=1200&q=85',
@@ -39,9 +32,7 @@ const projects = [
     ],
   },
   {
-    tag: 'Капитальный ремонт',
-    title: 'Студия 40 м²',
-    location: 'Минимализм',
+    idx: 3,
     cover: 'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=600&q=80',
     images: [
       'https://images.unsplash.com/photo-1616486338812-3dadae4b4ace?w=1200&q=85',
@@ -98,8 +89,8 @@ onUnmounted(() => {
   <section id="portfolio" class="portfolio">
     <div class="container">
       <div ref="headerRef" class="section-header section-reveal" :class="{ revealed: headerRevealed }">
-        <p class="section-label">04 / Портфолио</p>
-        <h2 class="section-title">Наши работы<br>говорят за нас</h2>
+        <p class="section-label">{{ $t('portfolio.label') }}</p>
+        <h2 class="section-title">{{ $t('portfolio.title1') }}<br>{{ $t('portfolio.title2') }}</h2>
       </div>
       <div class="portfolio__grid">
         <RevealCard
@@ -110,12 +101,12 @@ onUnmounted(() => {
           @click="openLightbox(i)"
         >
           <div class="portfolio__card-img">
-            <img :src="project.cover" :alt="project.title" loading="lazy">
+            <img :src="project.cover" :alt="$t(`portfolio.projects[${project.idx}].title`)" loading="lazy">
           </div>
           <div class="portfolio__card-info">
-            <span class="portfolio__card-tag">{{ project.tag }}</span>
-            <h3 class="portfolio__card-title">{{ project.title }}</h3>
-            <p class="portfolio__card-location">{{ project.location }}</p>
+            <span class="portfolio__card-tag">{{ $t(`portfolio.projects[${project.idx}].tag`) }}</span>
+            <h3 class="portfolio__card-title">{{ $t(`portfolio.projects[${project.idx}].title`) }}</h3>
+            <p class="portfolio__card-location">{{ $t(`portfolio.projects[${project.idx}].location`) }}</p>
           </div>
         </RevealCard>
       </div>
@@ -124,11 +115,11 @@ onUnmounted(() => {
     <Teleport to="body">
       <Transition name="lightbox">
         <div v-if="lightboxOpen" class="lightbox" :class="{ light: isLight }" @click.self="closeLightbox">
-          <button class="lightbox__close" aria-label="Закрыть" @click="closeLightbox">
+          <button class="lightbox__close" :aria-label="$t('portfolio.close')" @click="closeLightbox">
             <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M18 6L6 18M6 6l12 12" /></svg>
           </button>
 
-          <button class="lightbox__arrow lightbox__arrow--prev" aria-label="Назад" @click="lightboxPrev">
+          <button class="lightbox__arrow lightbox__arrow--prev" :aria-label="$t('portfolio.prev')" @click="lightboxPrev">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M15 18l-6-6 6-6" /></svg>
           </button>
 
@@ -137,17 +128,17 @@ onUnmounted(() => {
               <img
                 :key="lightboxSlide"
                 :src="projects[lightboxProject].images[lightboxSlide]"
-                :alt="`${projects[lightboxProject].title} — фото ${lightboxSlide + 1}`"
+                :alt="`${$t(`portfolio.projects[${lightboxProject}].title`)} — ${$t('portfolio.photo')} ${lightboxSlide + 1}`"
                 class="lightbox__img"
               >
             </Transition>
             <div class="lightbox__meta">
-              <span class="lightbox__title">{{ projects[lightboxProject].title }}</span>
+              <span class="lightbox__title">{{ $t(`portfolio.projects[${lightboxProject}].title`) }}</span>
               <span class="lightbox__counter">{{ lightboxSlide + 1 }} / {{ projects[lightboxProject].images.length }}</span>
             </div>
           </div>
 
-          <button class="lightbox__arrow lightbox__arrow--next" aria-label="Вперёд" @click="lightboxNext">
+          <button class="lightbox__arrow lightbox__arrow--next" :aria-label="$t('portfolio.next')" @click="lightboxNext">
             <svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 18l6-6-6-6" /></svg>
           </button>
 

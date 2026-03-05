@@ -2,15 +2,25 @@ export default defineNuxtConfig({
   compatibilityDate: '2025-01-01',
   devtools: { enabled: true },
 
+  modules: ['@nuxtjs/i18n'],
+
+  i18n: {
+    locales: [
+      { code: 'en', iso: 'en-US', file: 'en.json', name: 'English' },
+      { code: 'uk', iso: 'uk-UA', file: 'uk.json', name: 'Українська' },
+      { code: 'ka', iso: 'ka-GE', file: 'ka.json', name: 'ქართული' },
+      { code: 'ru', iso: 'ru-RU', file: 'ru.json', name: 'Русский' },
+    ],
+    defaultLocale: 'ru',
+    strategy: 'prefix_except_default',
+    lazy: true,
+    langDir: 'locales',
+  },
+
   app: {
     head: {
-      htmlAttrs: { lang: 'ru' },
-      title: 'AisBud — ремонт с гарантией качества',
       meta: [
-        { name: 'description', content: 'AisBud — ремонт квартир и домов в Грузии. Полный спектр работ по ремонту и отделке с гарантией качества.' },
         { name: 'viewport', content: 'width=device-width, initial-scale=1.0' },
-        { property: 'og:title', content: 'AisBud — ремонт с гарантией качества' },
-        { property: 'og:description', content: 'Ремонт квартир и домов в Грузии. Полный спектр работ по ремонту и отделке.' },
         { property: 'og:type', content: 'website' },
       ],
       link: [
@@ -23,4 +33,10 @@ export default defineNuxtConfig({
   },
 
   css: ['~/assets/css/main.css'],
+
+  nitro: {
+    prerender: {
+      routes: ['/en', '/uk', '/ka'],
+    },
+  },
 })

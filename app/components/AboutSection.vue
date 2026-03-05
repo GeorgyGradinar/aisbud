@@ -4,17 +4,17 @@ const { el: imageRef, revealed: imageRevealed } = useReveal()
 const { el: textRef, revealed: textRevealed } = useReveal()
 const { el: statsRef, revealed: statsRevealed } = useReveal({ threshold: 0.3 })
 
-const stats = [
-  { end: 3, suffix: '+', label: 'лет опыта' },
-  { end: 50, suffix: '+', label: 'проектов' },
-  { end: 100, suffix: '%', label: 'гарантия' },
+const statDefs = [
+  { end: 3, suffix: '+', labelKey: 'about.stats.years' },
+  { end: 50, suffix: '+', labelKey: 'about.stats.projects' },
+  { end: 100, suffix: '%', labelKey: 'about.stats.guarantee' },
 ]
 
-const counters = ref(stats.map(() => 0))
+const counters = ref([0, 0, 0])
 
 watch(statsRevealed, (isRevealed) => {
   if (!isRevealed) return
-  stats.forEach((stat, i) => {
+  statDefs.forEach((stat, i) => {
     const duration = 1800
     const start = performance.now()
     function animate(now: number) {
@@ -35,36 +35,28 @@ watch(statsRevealed, (isRevealed) => {
       <div class="about__inner">
         <div class="about__left">
           <div ref="headerRef" class="section-reveal" :class="{ revealed: headerRevealed }">
-            <p class="section-label">05 / О нас</p>
-            <h2 class="section-title">Больше 3 лет<br>работы в Грузии</h2>
+            <p class="section-label">{{ $t('about.label') }}</p>
+            <h2 class="section-title">{{ $t('about.title1') }}<br>{{ $t('about.title2') }}</h2>
           </div>
           <div ref="imageRef" class="about__image image-reveal" :class="{ revealed: imageRevealed }">
-            <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=700&q=80" alt="Команда AisBud за работой" loading="lazy">
+            <img src="https://images.unsplash.com/photo-1581578731548-c64695cc6952?w=700&q=80" :alt="$t('about.imageAlt')" loading="lazy">
           </div>
         </div>
         <div class="about__right">
           <div ref="textRef" class="section-reveal" :class="{ revealed: textRevealed }" style="transition-delay: 0.15s">
-            <p class="about__text">
-              Мы работаем в Грузии уже более 3 лет. За это время нашли качественные
-              материалы, у нас появились надёжные партнёры и сформировали команду
-              опытных профессионалов.
-            </p>
-            <p class="about__text">
-              Мы работаем, чтобы ремонт становился прозрачным и понятным процессом,
-              а результат радовал вас и оставался в памяти как приятное
-              и увлекательное событие.
-            </p>
+            <p class="about__text">{{ $t('about.text1') }}</p>
+            <p class="about__text">{{ $t('about.text2') }}</p>
           </div>
           <div ref="statsRef" class="about__stats">
             <div
-              v-for="(stat, i) in stats"
+              v-for="(stat, i) in statDefs"
               :key="i"
               class="stat section-reveal"
               :class="{ revealed: statsRevealed }"
               :style="{ transitionDelay: `${i * 0.12}s` }"
             >
               <span class="stat__number">{{ counters[i] }}{{ stat.suffix }}</span>
-              <span class="stat__label">{{ stat.label }}</span>
+              <span class="stat__label">{{ $t(stat.labelKey) }}</span>
             </div>
           </div>
         </div>

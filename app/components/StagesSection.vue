@@ -1,15 +1,12 @@
 <script setup lang="ts">
 const { el: headerRef, revealed: headerRevealed } = useReveal()
 
-const stages = [
-  { num: '01', title: 'Замер и оценка', desc: 'Выезжаем на объект, фиксируем размеры, обсуждаем пожелания и формируем смету', icon: 'search' },
-  { num: '02', title: 'Подготовительные работы', desc: 'Демонтаж, вывоз мусора, подготовка помещения к ремонту', icon: 'trash' },
-  { num: '03', title: 'Черновые работы', desc: 'Электрика, сантехника, штукатурка, стяжка полов', icon: 'zap' },
-  { num: '04', title: 'Подготовка объекта', desc: 'Шпаклёвка, грунтовка, выравнивание поверхностей под финиш', icon: 'grid' },
-  { num: '05', title: 'Чистовая отделка', desc: 'Покраска, укладка плитки, монтаж полов и потолков', icon: 'tiles' },
-  { num: '06', title: 'Монтаж и финиш', desc: 'Установка дверей, мебели, освещения, сантехники', icon: 'floor' },
-  { num: '07', title: 'Контроль и сдача', desc: 'Финальная проверка, устранение замечаний, передача ключей', icon: 'check' },
-]
+const stageIcons = ['search', 'trash', 'zap', 'grid', 'tiles', 'floor', 'check']
+const stages = stageIcons.map((icon, i) => ({
+  num: String(i + 1).padStart(2, '0'),
+  icon,
+  idx: i,
+}))
 
 const timeline = ref<HTMLElement>()
 const timelineFill = ref<HTMLElement>()
@@ -58,8 +55,8 @@ onUnmounted(() => {
   <section id="stages" class="stages">
     <div class="container">
       <div ref="headerRef" class="section-header section-header--center section-reveal" :class="{ revealed: headerRevealed }">
-        <p class="section-label">02 / Этапы</p>
-        <h2 class="section-title">Прозрачный процесс<br>от замера до сдачи</h2>
+        <p class="section-label">{{ $t('stages.label') }}</p>
+        <h2 class="section-title">{{ $t('stages.title1') }}<br>{{ $t('stages.title2') }}</h2>
       </div>
       <div ref="timeline" class="timeline">
         <div class="timeline__track">
@@ -79,8 +76,8 @@ onUnmounted(() => {
           <template v-if="i % 2 === 0">
             <div class="timeline__card">
               <span class="timeline__number">{{ stage.num }}</span>
-              <h3 class="timeline__title">{{ stage.title }}</h3>
-              <p class="timeline__desc">{{ stage.desc }}</p>
+              <h3 class="timeline__title">{{ $t(`stages.items[${stage.idx}].title`) }}</h3>
+              <p class="timeline__desc">{{ $t(`stages.items[${stage.idx}].desc`) }}</p>
               <div class="timeline__icon">
                 <StageIcon :name="stage.icon" />
               </div>
@@ -91,8 +88,8 @@ onUnmounted(() => {
             <div class="timeline__dot" />
             <div class="timeline__card">
               <span class="timeline__number">{{ stage.num }}</span>
-              <h3 class="timeline__title">{{ stage.title }}</h3>
-              <p class="timeline__desc">{{ stage.desc }}</p>
+              <h3 class="timeline__title">{{ $t(`stages.items[${stage.idx}].title`) }}</h3>
+              <p class="timeline__desc">{{ $t(`stages.items[${stage.idx}].desc`) }}</p>
               <div class="timeline__icon">
                 <StageIcon :name="stage.icon" />
               </div>
