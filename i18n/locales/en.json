@@ -1,0 +1,121 @@
+{
+  "nav": {
+    "services": "Services",
+    "stages": "Stages",
+    "podcasts": "Podcasts",
+    "portfolio": "Portfolio",
+    "about": "About us"
+  },
+  "hero": {
+    "label": "Apartment and house renovation in Georgia",
+    "title1": "Renovation,",
+    "title2": "you'll",
+    "titleItalic": "want",
+    "title3": "to return to",
+    "desc": "My name is Anton, I'm a builder with extensive practical experience. At AisBud we carry out private and commercial renovations, pay attention to details and control every stage of the work.",
+    "services": "Our services",
+    "call": "Call",
+    "quote": "My goal is for you to walk into the finished space and say: 'This is exactly how I imagined it'.",
+    "quoteAuthor": "— Anton, founder of AisBud",
+    "scroll": "Scroll down",
+    "slides": {
+      "0": "Modern interior",
+      "1": "Bright living room",
+      "2": "Designer kitchen",
+      "3": "Cozy bedroom",
+      "4": "Stylish bathroom"
+    },
+    "slideLabel": "Slide"
+  },
+  "services": {
+    "label": "01 / Services",
+    "title1": "Full range of renovation",
+    "title2": "and finishing works",
+    "items": [
+      { "title": "Property search", "desc": "We help you choose an apartment or house for your budget and needs" },
+      { "title": "Design and technical plan", "desc": "Space design considering all your preferences" },
+      { "title": "Electrical", "desc": "Wiring, panel installation, outlets and switches" },
+      { "title": "Plumbing", "desc": "Installation and replacement of pipes, faucets, sanitary equipment" },
+      { "title": "Plastering and leveling", "desc": "Preparing walls and ceilings for finishing" },
+      { "title": "Painting and decor", "desc": "Wall painting, decorative plaster and finishing work" },
+      { "title": "Tile laying", "desc": "Bathroom, kitchen and other spaces of any complexity" },
+      { "title": "Floor installation", "desc": "Laminate, parquet, self-leveling floors and screed" },
+      { "title": "Doors and windows", "desc": "Entrance and interior doors, window systems installation" },
+      { "title": "Furniture and structures", "desc": "Built-in wardrobes, walk-in closets, custom kitchen furniture" },
+      { "title": "Air conditioning", "desc": "Supply and installation of air conditioning systems" },
+      { "title": "Lighting", "desc": "Light fixture selection and installation, interior lighting design" },
+      { "title": "Decor and small works", "desc": "Final touches, shelf and curtain rod mounting, decorative elements" }
+    ]
+  },
+  "stages": {
+    "label": "02 / Stages",
+    "title1": "Transparent process",
+    "title2": "from measurement to handover",
+    "items": [
+      { "title": "Measurement and estimate", "desc": "We visit the site, take measurements, discuss requirements and prepare an estimate" },
+      { "title": "Preparatory work", "desc": "Demolition, waste removal, site preparation for renovation" },
+      { "title": "Rough work", "desc": "Electrical, plumbing, plastering, floor screed" },
+      { "title": "Surface preparation", "desc": "Putty, priming, leveling surfaces for finish" },
+      { "title": "Finish work", "desc": "Painting, tile laying, floor and ceiling installation" },
+      { "title": "Installation and finishing", "desc": "Door installation, furniture, lighting, sanitary fixtures" },
+      { "title": "Inspection and handover", "desc": "Final inspection, defect correction, key handover" }
+    ]
+  },
+  "videos": {
+    "label": "03 / Podcasts",
+    "title": "Podcasts",
+    "tag": "Podcast",
+    "items": [
+      { "title": "2025 summary", "desc": "Year in review: projects, team and future plans" },
+      { "title": "Podcast #1", "desc": "First episode: about renovation, materials and life in Georgia" }
+    ]
+  },
+  "portfolio": {
+    "label": "04 / Portfolio",
+    "title1": "Our work",
+    "title2": "speaks for itself",
+    "projects": [
+      { "tag": "Cosmetic renovation", "title": "65 m² apartment", "location": "Central Residential Complex" },
+      { "tag": "Full finishing", "title": "Bathroom", "location": "Designer renovation" },
+      { "tag": "Design + renovation", "title": "Kitchen-living room", "location": "Loft style" },
+      { "tag": "Major renovation", "title": "40 m² studio", "location": "Minimalism" }
+    ],
+    "close": "Close",
+    "prev": "Previous",
+    "next": "Next",
+    "photo": "photo"
+  },
+  "about": {
+    "label": "05 / About us",
+    "title1": "Over 3 years",
+    "title2": "of work in Georgia",
+    "text1": "We have been working in Georgia for over 3 years. During this time we found quality materials, reliable partners and built a team of experienced professionals.",
+    "text2": "We work to make renovation a transparent and clear process, and the result brings you joy and remains in your memory as a pleasant and exciting experience.",
+    "stats": {
+      "years": "years of experience",
+      "projects": "projects",
+      "guarantee": "guarantee"
+    },
+    "imageAlt": "AisBud team at work"
+  },
+  "cta": {
+    "title": "Ready to start renovation?",
+    "desc": "Contact us for a free consultation and cost estimate",
+    "call": "Call"
+  },
+  "footer": {
+    "tagline": "Carefully and with care for your home",
+    "copyright": "© 2026 AisBud. All rights reserved."
+  },
+  "seo": {
+    "title": "AisBud — renovation with quality guarantee",
+    "description": "AisBud — apartment and house renovation in Georgia. Full range of renovation and finishing works with quality guarantee.",
+    "ogTitle": "AisBud — renovation with quality guarantee",
+    "ogDescription": "Apartment and house renovation in Georgia. Full range of renovation and finishing works."
+  },
+  "common": {
+    "toggleTheme": "Toggle theme",
+    "menu": "Menu",
+    "founderAlt": "Anton — founder of AisBud"
+  }
+}
